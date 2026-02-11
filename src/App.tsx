@@ -14,6 +14,8 @@ import { Footer } from './components/Footer';
 
 export function App(){
 
+
+
     return(
     
     <>
@@ -35,7 +37,7 @@ export function App(){
         <form className='form' action="">
           <div className="formRow">
             <DefaultInput 
-            labelText='Digite a Tarefa' 
+            labelText='Digite a sua Tarefa'
             id='meuInput' 
             type='text' 
             placeholder='Digite algo' 
