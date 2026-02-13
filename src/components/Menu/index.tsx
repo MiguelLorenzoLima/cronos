@@ -49,7 +49,7 @@ export function Menu(){
         </a>
 
         <a className={styles.menuLink} href="#" aria-label='mudar a cor do tema' title='mudar a cor do Tema' onClick={handleThemeChange} >
-            {nextThemeIcon[theme]};
+            {nextThemeIcon[theme]}
         </a>
     </nav>
     );
