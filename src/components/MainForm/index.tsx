@@ -42,12 +42,12 @@ export function MainForm(){
       type: nextCycleType,
     };
 
-    const secondsRemaining = newTask.duration*60
+    const secondsRemaining = newTask.duration*60;
 
     setState(prevState => {
       return{
         ...prevState,
-        config: {...prevState.config},
+        config: {...prevState.config },
         activeTask:newTask,
         currentCycle: nextCycle,
         secondsRemaining,
