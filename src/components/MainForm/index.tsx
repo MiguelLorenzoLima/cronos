@@ -10,7 +10,6 @@ import { getNextCycleType } from "../../utils/getNextCycleType";
 import { TaskActionTypes } from "../../Contexts/TaskContext/taskActions";
 import { Tips } from "../tips";
 
-
 export function MainForm(){
 
   const {state, dispatch} = useTaskContext();
@@ -45,8 +44,6 @@ export function MainForm(){
 
 
     dispatch({type: TaskActionTypes.START_TASK, payload: newTask });
-
-    
 
   }
 
