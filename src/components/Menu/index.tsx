@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 import { HistoryIcon, HouseIcon, MoonIcon, SettingsIcon, SunIcon } from 'lucide-react';
+import { Link } from 'react-router';
 
 type AvailableThemes = 'dark' | 'light';
 
@@ -19,7 +20,7 @@ export function Menu(){
     function handleThemeChange(
         event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     ) {
-        event.preventDefault();//ele não vai seguir o link do href solzinho  
+        event.preventDefault();//ele não vai seguir o link do href sozinho  
 
       setTheme(prevTheme => {
         const nextTheme = prevTheme === 'dark' ? 'light' : 'dark';
@@ -36,20 +37,33 @@ export function Menu(){
     return( 
     <nav className={styles.menu}>
 
-        <a className={styles.menuLink} href="#" aria-label='ir para a Home' title='Ir para a Home'>
-            <HouseIcon />
+        <Link className={styles.menuLink} 
+        to="/" 
+        aria-label='ir para a Home' 
+        title='Ir para a Home'>
+        <HouseIcon />
+        </Link>
+
+        <a className={styles.menuLink}
+        href="#" 
+        aria-label='ir para a Histórico' 
+        title='Ir para o Hitórico'>
+        <HistoryIcon />
         </a>
 
-        <a className={styles.menuLink} href="#" aria-label='ir para a Histórico' title='Ir para o Hitórico'>
-            <HistoryIcon />
+        <a className={styles.menuLink} 
+        href="#" 
+        aria-label='ir para a Configurações' 
+        title='Ir para as Configurações'>
+        <SettingsIcon />
         </a>
 
-            <a className={styles.menuLink} href="#" aria-label='ir para a Configurações' title='Ir para as Configurações'>
-            <SettingsIcon />
-        </a>
-
-        <a className={styles.menuLink} href="#" aria-label='mudar a cor do tema' title='mudar a cor do Tema' onClick={handleThemeChange} >
-            {nextThemeIcon[theme]}
+        <a className={styles.menuLink} 
+        href="#" 
+        aria-label='mudar a cor do tema' 
+        title='mudar a cor do Tema' 
+        onClick={handleThemeChange} >
+        {nextThemeIcon[theme]}
         </a>
     </nav>
     );
