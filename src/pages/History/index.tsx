@@ -5,8 +5,16 @@ import { Heading } from '../../components/Heading';
 import { MainTemplate } from '../../templates/MainTemplate';
 
 import styles from './styles.module.css';
+import { useTaskContext } from '../../Contexts/TaskContext/useTaskContext';
+import { formatDate } from '../../utils/formateDate';
+import { getTaskStatus } from '../../utils/geTaskStatus';
 
 export function History() {
+  const {state} = useTaskContext();
+  const sortedTasks = [...state.tasks].sort((a, b)=>{
+    return b.startDate - a.startDate; //invertendo a ordem do array
+  });
+
   return (
     <MainTemplate>
       <Container>
@@ -38,14 +46,20 @@ export function History() {
 
             
             <tbody>
-              {Array.from({ length: 20 }).map((_, index) => {
+              {sortedTasks.map(task => {
+
+                const taskTypeDIctionary = {
+                  'workTime': 'Foco',
+                  'shortBreakTime': 'Pausa curta',
+                  'longBreakTime': 'Pausa longa',
+                }
                 return (
-                  <tr key={index}>
-                    <td>Estudar</td>
-                    <td>25min</td>
-                    <td>20/04/2025 08:00</td>
-                    <td>Completa</td>
-                    <td>Foco</td>
+                  <tr key={task.id}>
+                    <td>{task.name}</td>
+                    <td>{task.duration}</td>
+                    <td>{formatDate(task.startDate)}</td>
+                    <td>{getTaskStatus(task, state.activeTask)}</td>
+                    <td>{taskTypeDIctionary[task.type]}</td>
                   </tr>
                 );
               })}
