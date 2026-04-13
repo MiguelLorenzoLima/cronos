@@ -44,6 +44,7 @@ export function MainForm(){
       interruptDate: null,
       duration: state.config[nextCycleType],
       type: nextCycleType,
+      task: undefined
     };
 
 

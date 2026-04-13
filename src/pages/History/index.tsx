@@ -40,6 +40,9 @@ export function History() {
     }));
   }, [state.tasks]);
 
+    useEffect(() => {
+    document.title = 'Histórico | Cronos Pomodoro';
+  }, []);
 
   useEffect(() => {
     if (!confirmClearHistory) return;
