@@ -50,7 +50,7 @@ export function TaskContextProvider({children}:TaskContextProviderProps) {
       worker.terminate();
     }else{
       dispatch({
-        type: TaskActionTypes.COUNT_DONW,
+        type: TaskActionTypes.COUNT_DOWN,
         payload: { secondsRemaining: countDownSeconds },
       });
     }
