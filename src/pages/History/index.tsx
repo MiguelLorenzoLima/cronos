@@ -3,17 +3,15 @@ import { Container } from '../../components/Container';
 import { DefaultButton } from '../../components/DefaultButton';
 import { Heading } from '../../components/Heading';
 import { MainTemplate } from '../../templates/MainTemplate';
-
-import styles from './styles.module.css';
 import { useTaskContext } from '../../Contexts/TaskContext/useTaskContext';
 import { formatDate } from '../../utils/formateDate';
 import { getTaskStatus } from '../../utils/geTaskStatus';
+import { sortTasks } from '../../utils/sortTasks';
+import styles from './styles.module.css';
 
 export function History() {
   const {state} = useTaskContext();
-  const sortedTasks = [...state.tasks].sort((a, b)=>{
-    return b.startDate - a.startDate; //invertendo a ordem do array
-  });
+  const sortedTasks = sortTasks({ tasks: state.tasks });
 
   return (
     <MainTemplate>
